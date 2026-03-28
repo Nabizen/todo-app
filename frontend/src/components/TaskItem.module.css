@@ -1,0 +1,63 @@
+.taskItem {
+  background-color: #2a2e32;
+  border-radius: 10px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.taskItem:hover {
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.7);  /* stronger shadow */
+  background-color: #32373d;                     /* lighter/darker shade */
+}
+
+.taskButtons {
+    display: flex;
+    gap: 10px;
+    align-items: center
+}
+
+/* Common button style for all task buttons */
+.taskButton {
+  padding: 6px 12px;           /* height and width control */
+  min-width: 60px;             /* ensures all buttons are the same width */
+  font-size: 14px;             /* uniform text size */
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;          /* rounded corners */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  color: white;
+  margin-left: 5px;            /* spacing between buttons */
+}
+
+/* Specific button colors */
+.deleteButton {
+  background-color: #e74c3c;   /* red */
+}
+
+.deleteButton:hover {
+  background-color: #c0392b;
+}
+
+.moveButton {
+  background-color: #3498db;   /* blue */
+}
+
+.moveButton:hover {
+  background-color: #2980b9;
+}
+
+.downButton {
+  background-color: #f1c40f;   /* yellow */
+  color: black;                 /* black text for contrast */
+}
+
+.downButton:hover {
+  background-color: #d4ac0d;
+}

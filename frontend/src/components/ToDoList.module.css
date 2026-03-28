@@ -1,0 +1,74 @@
+.todoMain {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.todoHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.todoHeader1 {
+    display: flex;
+}
+
+.todoHeader2 {
+    display: flex;
+    gap: 10px;
+}
+
+/* Input field styling */
+.todoInput {
+  background-color: #2d3136;
+  color: #ffffff;
+  width: 100%;               /* full width of container */
+  padding: 10px 15px;        /* inner spacing */
+  font-size: 16px;           /* readable text */
+  border: 2px solid #ccc;    /* light gray border */
+  border-radius: 8px;        /* rounded corners */
+  outline: none;             /* remove default focus outline */
+  transition: border 0.2s ease, box-shadow 0.2s ease; /* smooth hover/focus */
+}
+
+/* When user clicks or focuses input */
+.todoInput:focus {
+  border-color: #2cbcb4;     /* green border */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* subtle glow */
+}
+
+/* Placeholder styling */
+.todoInput::placeholder {
+  color: #999;               /* light gray placeholder text */
+  font-style: italic;
+}
+
+/* Button styling */
+.addButton {
+  padding: 10px 20px;             /* top-bottom 10px, left-right 20px */
+  font-size: 16px;                /* readable text */
+  font-weight: bold;              /* makes text stand out */
+  color: white;                   /* text color */
+  background-color: #4CAF50;      /* green background */
+  border: none;                   /* remove default border */
+  border-radius: 8px;             /* rounded corners to match input */
+  cursor: pointer;                /* hand cursor on hover */
+  transition: background-color 0.2s ease, transform 0.1s ease; /* smooth hover/click effect */
+}
+
+/* Hover effect */
+.addButton:hover {
+  background-color: #3b893f;      /* slightly darker green */
+}
+
+/* Active / click effect */
+.addButton:active {
+  transform: scale(0.98);         /* button shrinks slightly when clicked */
+}
+
+.todoList{
+    display: flex;
+    flex-direction: column;
+}
