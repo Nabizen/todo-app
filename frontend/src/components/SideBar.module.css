@@ -1,7 +1,50 @@
-.container {
+.sidebar {
     background-color: #272b2f;
     display: flex;
     flex-direction: column;
-    padding: 20px;
     width: 300px;
+    padding: 20px;
+}
+
+.sidebar h1 {
+    padding: 10px;
+    padding-bottom: 10px;
+}
+
+.sidebar span {
+    padding: 10px;
+    padding-top: 0px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar nav button {
+    width: 100%;
+    text-align: left;
+    background-color: #272b2f;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.sidebar nav button:hover {
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.7);
+    background-color: #282d32;
+}
+
+.sidebar nav button.active {
+    background-color: #3a3f45;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
 }

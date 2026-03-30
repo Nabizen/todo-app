@@ -1,36 +1,19 @@
 // import Header from './components/Header.tsx'
-import ToDoList from './components/ToDoList.tsx'
+import ToDoList from './components/TaskList.tsx'
 import SideBar from './components/SideBar.tsx'
+import { useState } from 'react';
 
 function App() {
+  const [view, setView] = useState<"active" | "completed">("active");
 
   return(
     <div className="dashboard-page">
       <div className='dashboard-main'>
-        <SideBar/>
-        <ToDoList/>
+        <SideBar view={view} setView={setView}/>
+        <ToDoList view={view} />
       </div>
     </div>
   );
-
-  // const [todos, setTodos] = useState<string[]>([]);
-  // useEffect(() => {
-  //   fetch("http://localhost:8080/api/todos") // your backend API
-  //     .then((res) => res.json())
-  //     .then((data) => setTodos(data))
-  //     .catch((err) => console.error("Error fetching todos:", err));
-  // }, []);
-
-  // return (
-  //   <div>
-  //     <h1>Todo List</h1>
-  //     <ul>
-  //       {todos.map((todo, i) => (
-  //         <li key={i}>{todo}</li>
-  //       ))}
-  //     </ul>
-  //   </div>
-  // );
 }
 
 export default App

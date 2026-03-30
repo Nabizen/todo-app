@@ -45,19 +45,10 @@
   background-color: #c0392b;
 }
 
-.moveButton {
+.doneButton {
   background-color: #3498db;   /* blue */
 }
 
-.moveButton:hover {
+.doneButton:hover {
   background-color: #2980b9;
-}
-
-.downButton {
-  background-color: #f1c40f;   /* yellow */
-  color: black;                 /* black text for contrast */
-}
-
-.downButton:hover {
-  background-color: #d4ac0d;
 }
