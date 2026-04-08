@@ -1,4 +1,4 @@
-import styles from './SideBar.module.css'
+import styles from './NavBar.module.css'
 
 interface SideBarProps {
     view: "active" | "completed";

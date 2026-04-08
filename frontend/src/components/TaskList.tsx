@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './TaskList.module.css'
 import TaskItem from './TaskItem';
+import Modal from './ConfirmationBox';
 
 interface Task {
     id: number;
@@ -15,6 +16,8 @@ interface ToDoListProps {
 function ToDoList({ view }: ToDoListProps) {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [newTask, setNewTask] = useState<string>("");
+    const [openPopUp, setOpenPopUp] = useState(false);
+    const [taskToDelete, setTaskToDelete] = useState<Task | null>(null);
 
     useEffect(() => {
         fetch("http://localhost:8080/api/tasks")
@@ -56,8 +59,11 @@ function ToDoList({ view }: ToDoListProps) {
             if (response.ok) {
                 setTasks(prev => prev.filter(task => task.id !== id));
             }
+            setOpenPopUp(false);
+            setTaskToDelete(null);
         } catch (err) {
             console.error("Failed to delete task", err);
+            setOpenPopUp(false)
         }
     }
 
@@ -106,11 +112,24 @@ function ToDoList({ view }: ToDoListProps) {
                     <TaskItem
                         key={task.id}
                         task={task}
-                        doneTask={doneTask}
-                        deleteTask={deleteTask}
+                        doneTask={() => doneTask(task.id)}
+                        deleteTask={() => {
+                            setOpenPopUp(true);                            
+                            setTaskToDelete(task);
+
+                        }}
                     />
                 ))}
             </ol>
+
+            <Modal
+                task={taskToDelete}
+                isOpen={openPopUp}
+                onClose={() => setOpenPopUp(false)}
+                onConfirm={deleteTask}
+                title="Delete Task?"
+                >Are you sure you want to delete this task?
+            </Modal>
         </div>
     );
 }

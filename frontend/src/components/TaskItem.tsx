@@ -8,8 +8,8 @@ interface Task {
 
 interface TaskItemProps {
   task: Task;
-  doneTask: (index: number) => void;
-  deleteTask: (index: number) => void;
+  doneTask:() => void;
+  deleteTask?: () => void;
 }
 
 function TaskItem({ task, doneTask, deleteTask }: TaskItemProps) {
@@ -17,8 +17,8 @@ function TaskItem({ task, doneTask, deleteTask }: TaskItemProps) {
         <li className={styles.taskItem}>
             <span className={styles.taskText}>{task.text}</span>
             <div className={styles.taskButtons}>
-                <button className={`${styles.taskButton} ${styles.doneButton}`} onClick={() => doneTask(task.id)}>{task.done ? "Undo" : "Done"}</button>
-                <button className={`${styles.taskButton} ${styles.deleteButton}`} onClick={() => deleteTask(task.id)}>Delete</button>
+                <button className={`${styles.taskButton} ${styles.doneButton}`} onClick={doneTask}>{task.done ? "Undo" : "Done"}</button>
+                <button className={`${styles.taskButton} ${styles.deleteButton}`} onClick={deleteTask}>Delete</button>
             </div>
         </li>
     );
