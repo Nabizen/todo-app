@@ -20,25 +20,6 @@
     gap: 10px;
 }
 
-.taskInput select {
-  background-color: #2d3136;
-  color: #ffffff;
-  padding: 10px 15px;
-  font-size: 16px;
-  border: 2px solid #2d3136;
-  border-radius: 8px;        
-  outline: none;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
-}
-
-.taskInput select:hover {
-  border-color: #4f9cff;
-}
-
-.taskInput select:focus {
-  border-color: #ccc;
-}
-
 .textInput {
   background-color: #2d3136;
   color: #ffffff;
@@ -64,6 +45,45 @@
   font-style: italic;
 }
 
+.taskInput select {
+  background-color: #2d3136;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #2d3136;
+  border-radius: 8px;        
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.taskInput select:hover {
+  border-color: #4f9cff;
+}
+
+.taskInput select:focus {
+  border-color: #ccc;
+}
+
+.dateInput {
+  background-color: #2d3136;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 16px;
+
+  border: 2px solid #2d3136;
+  border-radius: 8px;
+
+  outline: none;
+}
+
+.dateInput:hover {
+  border-color: #4f9cff;
+}
+
+.dateInput:focus {
+  border-color: #ccc;
+}
+
 .addButton {
   padding: 10px 20px;             
   font-size: 16px;                
@@ -82,9 +102,4 @@
 
 .addButton:active {
   transform: scale(0.98);         
-}
-
-.todoList{
-    display: flex;
-    flex-direction: column;
 }

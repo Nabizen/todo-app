@@ -106,3 +106,24 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
 	... 16 more
+2026-04-13 14:55:51.825470+08:00 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "TEXT CHARACTER VARYING(255)": "'Aliquid quia perspiciatis in. Iste est quo unde iste dolores. Quis nisi necessi... (540)"; SQL statement:
+insert into task (done,priority,text,id) values (?,?,?,default) [22001-240]
+2026-04-13 14:56:06.434123+08:00 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "TEXT CHARACTER VARYING(255)": "'Aliquid quia perspiciatis in. Iste est quo unde iste dolores. Quis nisi necessi... (540)"; SQL statement:
+insert into task (done,priority,text,id) values (?,?,?,default) [22001-240]
+2026-04-13 14:56:47.213633+08:00 jdbc[35]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "TEXT CHARACTER VARYING(255)": "'Aliquid quia perspiciatis in. Iste est quo unde iste dolores. Quis nisi necessi... (360)"; SQL statement:
+insert into task (done,priority,text,id) values (?,?,?,default) [22001-240]
+2026-04-13 14:56:50.774755+08:00 jdbc[35]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "TEXT CHARACTER VARYING(255)": "'Aliquid quia perspiciatis in. Iste est quo unde iste dolores. Quis nisi necessi... (360)"; SQL statement:
+insert into task (done,priority,text,id) values (?,?,?,default) [22001-240]
+2026-04-13 14:56:51.076123+08:00 jdbc[35]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "TEXT CHARACTER VARYING(255)": "'Aliquid quia perspiciatis in. Iste est quo unde iste dolores. Quis nisi necessi... (360)"; SQL statement:
+insert into task (done,priority,text,id) values (?,?,?,default) [22001-240]
+2026-04-13 14:56:51.265450+08:00 jdbc[35]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "TEXT CHARACTER VARYING(255)": "'Aliquid quia perspiciatis in. Iste est quo unde iste dolores. Quis nisi necessi... (360)"; SQL statement:
+insert into task (done,priority,text,id) values (?,?,?,default) [22001-240]
+2026-04-13 14:56:51.431796+08:00 jdbc[35]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "TEXT CHARACTER VARYING(255)": "'Aliquid quia perspiciatis in. Iste est quo unde iste dolores. Quis nisi necessi... (360)"; SQL statement:
+insert into task (done,priority,text,id) values (?,?,?,default) [22001-240]

@@ -35,6 +35,23 @@
     align-items: center
 }
 
+.taskRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.deadline {
+  font-size: 12px;
+  color: #aaa;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 /* Common button style for all task buttons */
 .taskButton {
   padding: 6px 12px;           /* height and width control */

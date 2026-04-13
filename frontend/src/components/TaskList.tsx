@@ -8,6 +8,7 @@ interface Task {
     text: string;
     done: boolean;
     priority: string;
+    deadline?: string;
 }
 
 interface ToDoListProps {
@@ -20,6 +21,7 @@ function ToDoList({ view }: ToDoListProps) {
     const [taskToDelete, setTaskToDelete] = useState<Task | null>(null);
     const [openPopUp, setOpenPopUp] = useState(false);
     const [priority, setPriority] = useState("medium");
+    const [deadline, setDeadline] = useState("");
 
     useEffect(() => {
         fetch("http://localhost:8080/api/tasks")
@@ -34,7 +36,7 @@ function ToDoList({ view }: ToDoListProps) {
 
     async function addTask() {
         if (newTask.trim() !== "") {
-            const taskToAdd = { text: newTask, done: false, priority: priority };
+            const taskToAdd = { text: newTask, done: false, priority: priority, deadline: deadline };
             try {
                 const response = await fetch("http://localhost:8080/api/tasks", {
                     method: "POST",
@@ -114,11 +116,15 @@ function ToDoList({ view }: ToDoListProps) {
                     </div>
                     <div className={styles.taskInput}>
                         <input type="text" placeholder='Enter Task...' value={newTask} onChange={handleInputChange} className={styles.textInput}/>
+
+                        <input type="date" value={deadline} onChange={(e) => setDeadline(e.target.value)} className={styles.dateInput}/>
+
                         <select value={priority} onChange={(e) => setPriority(e.target.value)}>
                             <option value="high">High</option>
                             <option value="medium">Medium</option>
                             <option value="low">Low</option>
                         </select>
+
                         <button className={styles.addButton} onClick={addTask}>Create Task</button>
                     </div>
                 </div>
@@ -155,23 +161,6 @@ function ToDoList({ view }: ToDoListProps) {
                     </div>
                 ))}
             </div>
-
-            {/* <ol>
-                {tasks
-                .filter(task => view === "active" ? !task.done : task.done)
-                .map((task) => (
-                    <TaskItem
-                        key={task.id}
-                        task={task}
-                        doneTask={() => doneTask(task.id)}
-                        deleteTask={() => {
-                            setOpenPopUp(true);                            
-                            setTaskToDelete(task);
-
-                        }}
-                    />
-                ))}
-            </ol> */}
 
             <Modal
                 task={taskToDelete}
