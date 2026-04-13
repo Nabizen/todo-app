@@ -17,4 +17,5 @@ public class Task {
     private Integer id;
     private String text;
     private boolean done;
+    private String priority;
 }

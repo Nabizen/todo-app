@@ -15,12 +15,31 @@
     display: flex;
 }
 
-.todoHeader2 {
+.taskInput {
     display: flex;
     gap: 10px;
 }
 
-.todoInput {
+.taskInput select {
+  background-color: #2d3136;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #2d3136;
+  border-radius: 8px;        
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.taskInput select:hover {
+  border-color: #4f9cff;
+}
+
+.taskInput select:focus {
+  border-color: #ccc;
+}
+
+.textInput {
   background-color: #2d3136;
   color: #ffffff;
   width: 100%;               
@@ -32,13 +51,15 @@
   transition: border 0.2s ease, box-shadow 0.2s ease; 
 }
 
-.todoInput:focus {
-  border-color: #ccc;     
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); 
+.textInput:hover {
+  border-color: #4f9cff;
 }
 
+.textInput:focus {
+  border-color: #ccc;      
+}
 
-.todoInput::placeholder {
+.textInput::placeholder {
   color: #999;               
   font-style: italic;
 }

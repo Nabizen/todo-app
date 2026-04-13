@@ -7,6 +7,7 @@ interface Task {
     id: number;
     text: string;
     done: boolean;
+    priority: string;
 }
 
 interface ToDoListProps {
@@ -16,8 +17,9 @@ interface ToDoListProps {
 function ToDoList({ view }: ToDoListProps) {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [newTask, setNewTask] = useState<string>("");
-    const [openPopUp, setOpenPopUp] = useState(false);
     const [taskToDelete, setTaskToDelete] = useState<Task | null>(null);
+    const [openPopUp, setOpenPopUp] = useState(false);
+    const [priority, setPriority] = useState("medium");
 
     useEffect(() => {
         fetch("http://localhost:8080/api/tasks")
@@ -32,7 +34,7 @@ function ToDoList({ view }: ToDoListProps) {
 
     async function addTask() {
         if (newTask.trim() !== "") {
-            const taskToAdd = { text: newTask, done: false };
+            const taskToAdd = { text: newTask, done: false, priority: priority };
             try {
                 const response = await fetch("http://localhost:8080/api/tasks", {
                     method: "POST",
@@ -82,6 +84,26 @@ function ToDoList({ view }: ToDoListProps) {
         }
     }
 
+    // 1. Filter active / completed first
+    const filteredTasks = tasks.filter(task =>
+        view === "active" ? !task.done : task.done
+    );
+
+    type Priority = "high" | "medium" | "low";
+
+    // 2. Group by priority
+    const groupedTasks: Record<Priority, Task[]> = {
+        high: filteredTasks.filter(t => t.priority === "high"),
+        medium: filteredTasks.filter(t => t.priority === "medium"),
+        low: filteredTasks.filter(t => t.priority === "low"),
+    };
+
+    const priorities: { key: Priority; label: string }[] = [
+        { key: "high", label: "🔴 High Priority" },
+        { key: "medium", label: "🟡 Medium Priority" },
+        { key: "low", label: "🟢 Low Priority" },
+    ];
+
     return(
         <div className={styles.todoMain}>
 
@@ -90,8 +112,13 @@ function ToDoList({ view }: ToDoListProps) {
                     <div className={styles.todoHeader1}>
                         <h1>Active Tasks</h1>
                     </div>
-                    <div className={styles.todoHeader2}>
-                        <input type="text" placeholder='Enter Task...' value={newTask} onChange={handleInputChange} className={styles.todoInput}/>
+                    <div className={styles.taskInput}>
+                        <input type="text" placeholder='Enter Task...' value={newTask} onChange={handleInputChange} className={styles.textInput}/>
+                        <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
                         <button className={styles.addButton} onClick={addTask}>Create Task</button>
                     </div>
                 </div>
@@ -105,7 +132,31 @@ function ToDoList({ view }: ToDoListProps) {
                 </div>
             )}
 
-            <ol>
+            <div>
+                {priorities.map(priority => (
+                    <div key={priority.key}>
+
+                        {/* Only show section if it has tasks */}
+                        {groupedTasks[priority.key].length > 0 && (
+                            <h3>{priority.label}</h3>
+                        )}
+
+                        {groupedTasks[priority.key].map(task => (
+                            <TaskItem
+                                key={task.id}
+                                task={task}
+                                doneTask={() => doneTask(task.id)}
+                                deleteTask={() => {
+                                    setOpenPopUp(true);
+                                    setTaskToDelete(task);
+                                }}
+                            />
+                        ))}
+                    </div>
+                ))}
+            </div>
+
+            {/* <ol>
                 {tasks
                 .filter(task => view === "active" ? !task.done : task.done)
                 .map((task) => (
@@ -120,7 +171,7 @@ function ToDoList({ view }: ToDoListProps) {
                         }}
                     />
                 ))}
-            </ol>
+            </ol> */}
 
             <Modal
                 task={taskToDelete}
